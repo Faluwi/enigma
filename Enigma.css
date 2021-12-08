@@ -1,0 +1,197 @@
+body{
+    background-color: burlywood;
+}
+
+#main{
+    margin: 16px auto;
+    padding: 0 16px;
+    background-repeat: no-repeat;
+    background-position: center 0px;
+}
+
+#title{
+    align-content: center;
+}
+
+#walzen_view{
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+}
+#walzen_namen{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+}
+
+#walzen_model{
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+}
+
+.walzen_label{
+    font-size: larger;
+}
+
+.walze{
+    width: 80%;
+    border-style: solid;
+    border-color: black;
+    border-width: thick;
+    border-radius: 2%;
+    background-color: darkkhaki;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+}
+
+.label_normal{
+    font-size: 20px;
+    color: black;
+    background: darkkhaki;
+}
+
+.label_hin{
+    color: white;
+    background-color: green;
+}
+
+.label_zur{
+    color: white;
+    background: red;
+}
+
+textarea{
+    height: 20px;
+    font-size: large;
+    resize: none;
+    width: 100px;
+}
+#einstellungen{
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+#ausgabeFeld{
+    margin: 0;
+    padding: 0;
+    height: 20%;
+    font-size: medium;
+    background-color: white;
+    text-align: center;
+}
+#eingabeFeld{
+    margin: 0;
+    padding: 0;
+    height: 20%;
+    font-size: medium;
+    background-color: white;
+    text-align: center;
+}
+#impressum{
+    text-align: center;
+    height: 5%;
+    background-color: blueviolet;
+    color: gold;
+}
+#tastatur{
+    text-align: center;
+    height: fit-content;
+    width: 100%;
+    background-color: slategray;
+    float: left;
+}
+
+#buttons{
+    height: fit-content;
+    width: 20%;
+    background-color: goldenrod;
+    float: left;
+}
+
+.taste {
+    font-size: x-large;
+    text-align: center;
+    border-radius: 35%;
+}
+.navigator {
+    font-size: x-large;
+    text-align: center;
+    border-radius: 25%;
+}
+
+#infos{
+    width: 200px;
+    background-color: chartreuse;
+
+}
+
+.center {
+    text-align: center;
+}
+
+.keyboard { grid-area: tasten; }
+.navigation {grid-area: navi;}
+
+.tastaturGridContainer {
+    display: grid;
+    grid-template-areas:
+
+    'lampe tasten tasten navi';
+
+    grid-gap: 1px;
+    background-color: slategray;
+    padding: 1px;
+}
+
+.tastaturGridContainer > div {
+    background-color: slategray;
+    text-align: center;
+    padding: 1px 0;
+
+}
+
+
+#lampen-container{
+    grid-area: lampe;
+    display: grid;
+    grid-auto-rows: repeat(3, 1fr);
+}
+
+.lampen_row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.lamp {
+    margin: 3px 5px 3px 5px;
+    z-index:1;
+    width: 30px;
+    height: 30px;
+    border-color: #1f1a1a;
+    font-size: 25px;
+    border-style: solid;
+    border-radius: 50%;
+    border-width: 2px;
+    color: white;
+    background: grey;
+    box-shadow: 0 0 40px 10px transparent;
+}
+
+.lamp_on {
+    animation-name: licht;
+    animation-duration: 750ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes licht{
+    100%{
+        color: darkslategrey;
+        background: yellow;
+        border-color: yellow;
+        box-shadow: 0 0 40px 10px yellow;
+    }
+}

@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Enigma Visualisierung</title>
+    <link href="Enigma.css" rel="stylesheet" type="text/css">
+    <script src="Enigma.js"></script>
+</head>
+<body onload="init()">
+<div id="main">
+    <div id="title">
+        <h1>Enigma - Visualisierung (Javascript Projekt SS´21)</h1>
+    </div>
+
+    <div id="walzen_view">
+        <h2> Die Walzen der Enigma:</h2>
+        <div id="walzen_namen">
+            <label class="walzen_label" for="umkehrwalze"> Umkehrwalze</label>
+            <label class="walzen_label" for="walzeLinks"> Linke Walze</label>
+            <label class="walzen_label" for="walzeMitte"> Mittlere Walze</label>
+            <label class="walzen_label" for="walzeRechts"> Rechte Walze</label>
+            <label class="walzen_label" for="steckverbindung"> Steckverbindungen</label>
+        </div>
+        <div id="walzen_model">
+            <div class="walze" id="umkehrwalze"></div>
+            <div class="walze" id="walzeLinks"></div>
+            <div class="walze" id="walzeMitte"></div>
+            <div class="walze" id="walzeRechts"></div>
+            <div class="walze" id="steckverbindung"></div>
+        </div>
+    </div>
+
+    <hr>
+    <div id="einstellungen">
+        <form onchange="changeUKW()">
+            <label>Umkehrwalze:
+                <select id="ukwSelector" size="1">
+                    <option>UKWA</option>
+                    <option selected>UKWB</option>
+                    <option>UKWC</option>
+                </select>
+            </label>
+            <br>
+            <label>Spruchschlüssel:z.B. ABC
+                <textarea id="spKey" type="text"></textarea>
+            </label>
+            <br>
+            <button type="button" onclick="changeSpruch()">Schlüssel einstellen</button>
+        </form>
+        <form>
+            <label>Linke Walze:
+                <select id = "linksSelector" size="1">
+                    <option value="I" selected>I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                    <option value="V">V</option>
+                </select>
+            </label>
+            <br>
+            <label>Ringstellung:
+                <select id = "RSLSelector" size="1">
+                    <option selected>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option>20</option>
+                    <option>21</option>
+                    <option>22</option>
+                    <option>23</option>
+                    <option>24</option>
+                    <option>25</option>
+                    <option>26</option>
+                </select>
+            </label>
+            <br>
+            <button type="button" onclick="changeLinks()">Walze wechseln</button>
+        </form>
+        <form>
+            <label>Mittlere Walze:
+                <select  id= "mittelSelector" size="1">
+                    <option>I</option>
+                    <option selected>II</option>
+                    <option>III</option>
+                    <option>IV</option>
+                    <option>V</option>
+                </select>
+            </label>
+            <br>
+            <label>Ringstellung:
+                <select id = "RSMSelector" size="1">
+                    <option selected>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option>20</option>
+                    <option>21</option>
+                    <option>22</option>
+                    <option>23</option>
+                    <option>24</option>
+                    <option>25</option>
+                    <option>26</option>
+                </select>
+            </label>
+            <br>
+            <button type="button" onclick="changeMitte()">Walze wechseln</button>
+        </form>
+        <form>
+            <label>Rechte Walze:
+                <select id ="rechtsSelector" size="1">
+                    <option>I</option>
+                    <option>II</option>
+                    <option selected>III</option>
+                    <option valuw="IV">IV</option>
+                    <option value="V">V</option>
+                </select>
+            </label>
+            <br>
+            <label>Ringstellung:
+                <select id = "RSRSelector" size="1">
+                    <option selected>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option>20</option>
+                    <option>21</option>
+                    <option>22</option>
+                    <option>23</option>
+                    <option>24</option>
+                    <option>25</option>
+                    <option>26</option>
+                </select>
+            </label>
+            <br>
+            <button type="button" onclick="changeRechts()">Walze wechseln</button>
+        </form>
+        <form>
+            <label>Steckverbindung:
+                <textarea id="input" type="text"></textarea>
+            </label>
+            <button type="button" onclick="changeSteck()">Steckverbindung hinzufügen</button>
+        </form>
+    </div>
+    <hr>
+    <div id="eingabeFeld">Eingabe-Zeile: </div>
+    <hr>
+    <div id="ausgabeFeld">Ausgabe-Zeile: </div>
+    <hr>
+    <div class="tastaturGridContainer">
+    <div id="lampen-container">
+        <div class="lampen_row">
+            <div class="lamp"> Q </div>
+            <div class="lamp"> W </div>
+            <div class="lamp"> E </div>
+            <div class="lamp"> R </div>
+            <div class="lamp"> T </div>
+            <div class="lamp"> Z </div>
+            <div class="lamp"> U </div>
+            <div class="lamp"> I </div>
+            <div class="lamp"> O </div>
+        </div>
+        <div class="lampen_row">
+            <div class="lamp"> A </div>
+            <div class="lamp"> S </div>
+            <div class="lamp"> D </div>
+            <div class="lamp"> F </div>
+            <div class="lamp"> G </div>
+            <div class="lamp"> H </div>
+            <div class="lamp"> J </div>
+            <div class="lamp"> K </div>
+        </div>
+        <div class="lampen_row">
+            <div class="lamp"> P </div>
+            <div class="lamp"> Y </div>
+            <div class="lamp"> X </div>
+            <div class="lamp"> C </div>
+            <div class="lamp"> V </div>
+            <div class="lamp"> B </div>
+            <div class="lamp"> N </div>
+            <div class="lamp"> M </div>
+            <div class="lamp"> L </div>
+        </div>
+    </div>
+
+    <div id="tastatur" class="keyboard">
+            <form align="center">
+                <input type="button" class="taste" value="Q" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="W" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="E" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="R" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="T" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="Z" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="U" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="I" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="O" onclick="codeTaste(value);">
+            <br>
+                <input type="button" class="taste" value="A" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="S" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="D" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="F" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="G" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="H" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="J" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="K" onclick="codeTaste(value);">
+            <br>
+                <input type="button" class="taste" value="P" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="Y" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="X" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="C" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="V" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="B" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="N" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="M" onclick="codeTaste(value);">
+
+                <input type="button" class="taste" value="L" onclick="codeTaste(value);">
+            </form>
+        Bitte hier die Zeichen eintippen
+
+    </div>
+
+    <div class="navigation">
+        <input type="button" class="navigator" value="Halt" onclick="codeTaste(value);">
+        <br>
+        <input type="button" class="navigator" value="Melt" onclick="codeTaste(value);">
+        <br>
+        <input type="button" class="navigator" value="Catch Fire" onclick="codeTaste(value);">
+
+    </div>
+
+    </div>
+
+
+</div>
+
+</body>
+</html>
